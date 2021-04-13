@@ -1,0 +1,752 @@
+import org.omg.CORBA
+import org.omg.CORBA.Any
+
+import java.io.{FileNotFoundException, FileReader, IOException}
+import java.util.Date
+import scala.collection.immutable
+import scala.collection.mutable.{ArrayBuffer, ListBuffer}
+import scala.xml.dtd.ANY
+import Array._
+import scala.{+:, ::}
+import scala.collection.mutable.Set
+import scala.sys.process
+import scala.util.control.Breaks.{break, breakable}
+
+object scalaTest {
+  def main(args: Array[String]): Unit = {
+
+
+    /*var or val*/
+//    var a = 1
+//    val b =2
+//    a =3
+//    b = 4  //error : reassignment to val
+//    println(a, b)
+
+
+    /*if judge*/
+
+
+    /*if else if*/
+//    var score = 10
+//
+//
+//    if (score > 90){
+//
+//      print("优秀")
+//
+//    }else if(score > 80){
+//
+//      print("良好")
+//
+//    } else if(score > 60){
+//
+//      print("及格")
+//
+//    }else{
+//
+//      print("不及格")
+//
+//    }
+
+    /*match*/
+
+//    var score = 61
+//
+//    score match {
+//      case 69 => {
+//        print("69")
+//    }
+//      case 65 =>{
+//        print("65")
+//      }
+//      case _ => print("none")
+//
+//    }
+
+    /* loop*/
+
+
+    /*while*/
+//    var i = 1
+//
+//    while(i<10){
+//
+//      print("i is :"+i)
+//
+//      i+=1
+//
+//    }
+
+
+    /*do ... while */
+
+
+//    var i =0
+//    do{
+//
+//      print("i is :" +i)
+//      i+=1
+//
+//    }while(i < 10)
+
+    /*for*/
+
+//    val listA = List(1,2,3,4,5);
+//    for(m <- listA
+//        if m < 4; if m != 2){
+//print("elements is :"+m)
+//    }
+
+    /*for loop use range*/
+//    for(i <- range(1,10)){
+//      println(i)
+//    }
+
+    /*for eg2*/
+//    for(i <- 1 to 10 by 3){
+//      println(i)
+//    }
+
+    /*for use offset*/
+//    for(i <- range(1,10,2) ){
+//      println(i)
+//    }
+
+
+
+
+    /*for and if judge*/
+//    for (i <- 1 to 10
+//         if i%2 == 0){
+//      print(i)
+//
+//    }
+
+
+
+
+
+
+
+    /*for and yield*/
+
+//    val yieldTest = for{i <- 1 to 10
+//                              if i%7 == 0
+//                              }yield i
+//
+//    for(i <- yieldTest){
+//      print(i)
+//    }
+
+    /*yield eg2*/
+//    var testVar = for {i <- 1 to 10
+//                       if i % 3 == 0
+//                       } yield {print(i)
+//      i }
+//    println(testVar)
+
+
+    /*more creater for*/
+//    for( i <- range(1,9); j <- range(1,9)){
+//      println(i," * ",j,"=",i*j)
+//    }
+
+    /*break*/
+//    val arr = Array(1, 2, 49, 4, 88, 10)
+//    breakable{
+//      for(i <- arr){
+//        if(i>5) break
+//        println(i)
+//      }
+//    }
+
+    /*continue*/
+//    val arr = Array(1, 2, 66, 4, 88, 10)
+//    for(i <- arr){
+//      breakable{
+//        if(i >50){
+//          break
+//        }
+//        println(i)
+//      }
+//    }
+
+
+
+
+
+    /*String*/
+
+    /*StringBuilder*/
+//    val builder = new StringBuilder
+//    builder += 'a'  //+= for char add,so need ''
+//    builder ++= "def"  // ++= for string add ,so need ""
+//    println(builder.length)
+
+    /*add*/
+//    val str1 = "abc"
+//    val str2 = "ddd"
+//    var str3 = str1.concat(str2)
+//    var str4 = str1 + str2
+//    println(str3)
+//    println(str4)
+
+    /*split*/
+//    val str1 = "abc"
+//    val str2 = "dddeddddeddddd"
+//    val str3 = "a,b,c,d,e,f,e,1"
+//    var arr1 = new Array[String](10)
+//    arr1 = str3.split(",")
+//    for (i <- arr1){
+//      println(i)
+//    }
+//    arr1.foreach{x => println(x)}
+
+    /*stringBuffer*/
+//    var arrB1 = ArrayBuffer[Int]()
+//    arrB1.append(1)
+//    for(i <- arrB1){
+//      println(i)
+//    }
+//    arrB1.foreach{x => println(x)}
+
+    /*Array*/
+
+//    var arr1 = new Array[Int](3)
+//    arr1(0) = 1
+//    arr1(1) =2
+//    arr1.foreach(x => print("first:"+x+"\n"))
+//
+//    println("------------------")
+//
+//    arr1(0)=999
+//    arr1.foreach(x => print("second:"+x+"\n"))
+
+    /*Array Buffer*/
+
+//    var arr1 = new ArrayBuffer[Int]()
+//    arr1.append(1)
+//    arr1.append(2)
+//
+//    arr1.foreach(x => println(x))
+//    println("-----------")
+//    println(arr1(0))
+
+    /*two dim array*/
+//    var arr1 = Array.ofDim[Int](2,2)
+//    arr1(0)(0) = 1
+//    arr1(0)(1)  = 2
+//    arr1.foreach{x => x.foreach(y => println(y))}
+
+    /*array concat*/
+//    var arr2 = new Array[Int](1)
+//    arr2(0)=3
+//
+//    var arr3 = new Array[Int](1)
+//    arr3(0) = 4
+//
+//    var arr4 = concat(arr3, arr2)
+//
+//    arr4.foreach(x => println(x))
+//    for(i <- arr4){
+//      println(i)
+//    }
+
+
+
+    /*range array*/
+//    var arr1 = range(1,10)
+//    arr1.foreach(x => println(x))
+
+
+    /*add 3 once*/
+//    var arr2 = range(1,10,3)
+//    arr2.foreach(x => println(x))
+
+
+
+      /*for loop use range*/
+//    for(i <- range(1,10)){
+//      println(i)
+//    }
+
+
+
+
+
+    /*========================collection==================================*/
+
+
+
+
+    /******************************list*********************************/
+//    var list1 = List(1,2,3)
+//
+//    list1.foreach(x => println(x))
+//
+//    println(list1(0),list1(2))
+//
+//    println("------change ele-----------")
+//
+//    //list1(0) = 9999 //error : value update is not a member of List[Int]
+//
+//    println(list1(0))
+
+    /*list*/
+//    var arr1 = List(1, "2",3)
+//    arr1.foreach(x => println(x))
+
+    /*statement method2*/
+//    var list1 = 1::2::Nil
+//    list1.foreach(x => println(x))
+
+    /*common method*/
+//    var lb = new ListBuffer[Int]
+//    lb.append(1)
+//    lb.append(2,3,4)
+
+
+//    lb.foreach(x => println(x))
+
+    /*apply*/
+//    println(lb.apply(1))
+
+    /*drop*/
+//    var lb = new ListBuffer[Int]
+//    lb.append(1,2,3,4)
+//    var listTem = new ListBuffer[Int]
+//    listTem = lb.dropRight(2)
+//    listTem.foreach(x => println(x))
+
+    /*drop while*/
+//    var lb = new ListBuffer[Int]
+//    lb.append(1,2,3,4,5)
+//
+//    var lbTemp = new ListBuffer[Int]
+//    var len = lb.length
+//    lbTemp = lb.dropWhile(len => len<3 )
+//    lbTemp.foreach(x => println(x))
+
+
+    /*exist*/
+//    val listString = new ListBuffer[String]
+//    listString.append("张三","李四","麻子","赵四"," ")
+//    var flag:Boolean = listString.exists(x => x.equals("zhangsan"))
+//    val flag2 = listString.exists(x => x.equals("赵四"))
+//
+//    println("flag :"+flag)
+//    println("flag2 :"+flag2)
+
+    /*indexOf*/
+//    val lb = new ListBuffer[String]
+//    lb.append("张三","李四","王五","赵四"," ")
+//
+//    var index1 = lb.indexOf("张三")
+//    println(index1)
+//    println("------------------")
+//    var index2 = lb.indexOf("张三1")
+//    println(index2)
+
+
+    /*lastIndexOf*/
+//      val lb = new ListBuffer[String]
+//      lb.append("张三","李四","王五","赵四"," ","张三")
+//    var index = lb.lastIndexOf("张三")
+//    println(index)
+
+    /*map*/
+//    val lb = new ListBuffer[String]
+//    lb.append("张三","李四","王五","赵四"," ","张三")
+//    var list2 = lb.map(x => x.trim+"2333")
+//
+//    list2.foreach(x => println(x))
+
+    /*max min*/
+//    var lb = new ListBuffer[Int]
+//    lb.append(1,2,3,4,5)
+//    var x = lb.max
+//    println(x)
+//
+//    println("----------------")
+//    var n = lb.min
+//    println(n)
+
+    /*sorted and sortedBy*/
+//    var lb = new ListBuffer[Int]
+//    lb.append(1,2,9,4,5,2)
+//    var lb2 = lb.sorted
+//
+//    lb2.foreach(x => println("lb2 : "+x))
+//
+//    println("---------------")
+//
+//    var sortTest = (i:Int) => {
+//      i match {
+//        case 1 => 2
+//        case 2 => 1
+//        case 4 => 0
+//        case _ => 3
+//      }
+//    }
+//
+//    var lb3 = lb.sortBy(sortTest)
+//    lb3.foreach(x => println("lb3: "+x))
+
+    /*sortedBy 2*/
+
+//    //create a Class Person
+//    class Person(age:Int, salary:Double, name:String){
+//      var Age = age
+//
+//      var Salary  = salary
+//
+//      var Name  = name
+//
+//
+//    }
+//
+//    val lisa = new Person(38, 2.3, "lisa")
+//    val nana = new Person(1, 3.4, "nana")
+//    val zhaoSi = new Person(1, 5.9, "赵四")
+//    val grandpa = new Person(80, 20, "grandpa")
+//
+//    //create a list
+//    var listPerson = new ListBuffer[Person]
+//
+//    listPerson.append(lisa, nana, zhaoSi, grandpa)
+//
+//    //create a sort rule
+//    var sortRule = (p:Person) => {
+//      (p.Age, p.Salary)
+//    }
+//
+//
+//    //list sort use the list Rule
+//    var listPersonSorted = listPerson.sortBy(sortRule)(Ordering.Tuple2(Ordering.Int.reverse,
+//      Ordering.Double.reverse
+//      ))
+//
+//    listPersonSorted.foreach(x => println(x.Name, x.Age, x.Salary))
+
+    /*list concat*/
+//    var list1 = List(1)
+//    var list2 =List(2)
+//
+//    //method 1
+//    var list3 = list1:::list2
+//
+//    //method 2
+//    var list4 = List.concat(list1, list2)
+//    list3.foreach(x => println(x))
+//    list4.foreach(x => println("list4: "+x))
+
+
+    /**********************Tuple****************************/
+
+    /*create tuple*/
+    //    val tuple1 = (1,"yi",3.4)
+    //    println(tuple1._1)
+
+    /*foreach*/
+    //    val tuple1 = (1,"yi",3.4)
+    //
+    //    tuple1.productIterator.foreach(println(_))
+
+    /**********************Vector************************************/
+
+    /**create a vector*/
+//    val vector1 = Vector(1,2,33,"爱神的箭")
+//    vector1.foreach(println(_))
+//    println(vector1.getClass.getName)
+
+    /**concat vector**/
+//    val vector1 = Vector(1,2,33,"爱神的箭")
+//
+//    val vector2 = vector1:+1
+//    vector2.foreach(println("vector2 :",_))
+//
+//    val vector3 = 666+:vector1
+//    vector3.foreach(println("vector3 :",_))
+
+    /************************ Range***********************************/
+//    val range1 = new Range(1,5,2)
+//    range1.foreach(println(_))
+
+
+    println(1 to 5 by 1)
+    println(1.to(5).by(2))
+    println(1 until 5)
+    val a = .5f to 10.8f by 0.5f
+    a.foreach(println(_))
+
+    /****************************************set *****************/
+
+
+    /*set's head tail isEmpty*/
+//    var set1 =Set("一",1,2,"er")
+//    var set2 = Set()
+//    println("set1.head ："+set1.head)
+//    println("set1.tail："+set1.tail)
+//    println("set1.isEmpty："+set1.isEmpty)
+//    println("---------------")
+//
+//    println("set2 :"+set2.isEmpty)
+//    println(set2.getClass.getName)
+
+
+
+//    println(set1.apply(1))
+//    println(set1.apply(9999))
+
+    /*set concat*/
+//    var set1 =Set(1,2,3)
+//    var set2 =Set(4,5)
+//
+//    var set3 = set1++set2
+//
+//    var set4 = set1.++(set2)
+//    println("set3: "+set3)
+//    println("set4: "+set4)
+
+    /*set max min */
+//    var set1 = Set(1,2,3,99,100.3)
+//    println(set1.max)
+
+    /*set max min 2*/
+//    var set2 = Set("a", " b","C")
+//    println("set2: "+set2.max)
+
+
+
+    /*Set.intersect*/
+//    var set1 = Set(1,2,3,99,100.3)
+//    var set2 = Set(1,100.3)
+//    var set3 = set1.&(set2)
+//    var set4 = set1.intersect(set2)
+//
+//    set3.foreach(println(_))
+//    println("----------------")
+//    set4.foreach("set4: "+println(_))
+
+    /*set count*/
+//    var set1 = Set(1,2,3,99,100.3)
+//
+//    println(set1.apply(3))
+//    println(set1.contains(2222222))
+
+    /*set filter*/
+//    var set1 = Set(1,2,3,99,100.3)
+//    var set2 = set1.filter(_>3)
+//
+//    set2.foreach(println(_))
+
+    /*set forall*/
+//    var set1 = Set(1,2,3,99,100)
+//    println(set1.forall(_ >=1))
+
+    /*iterator*/
+//    var inter = Iterator(1, 2, 3, 4)
+//    while (inter.hasNext){
+//
+//      println(inter.next())
+//    }
+
+    /*iterator's max min*/
+//    var iter = Iterator(1, 2, 3, 4)
+//    println(iter.max)
+//    println(iter.min)
+
+    /*iterator's find*/
+//    var iter = Iterator(1, 2, 3, 4)
+//    iter.find(_>2)
+//    while (iter.hasNext){
+//      println(iter.next())
+//    }
+    /*set  flatmap*/
+//    var iter = Iterator(1, 2, 3, 4)
+//    var iter2 = iter.flatMap(e => e * 10)
+//
+//    while (iter2.hasNext){
+//      iter2.next()
+//    }
+
+
+
+    /**
+     * method
+     *
+     * */
+    def add(b: Int, a: Int)={
+
+      var c = a
+      var d =b
+      a+b
+
+    }
+
+
+
+
+    /*Omit method's parameter*/
+//    def add1 ={
+//      var c = "this is c"
+//      print("this is c2222")
+//    }
+//
+//    println(add1)
+
+    //reference a method
+//    val c = add(1,2)
+//    print(c)
+
+
+    /* test the default parameter */
+//    val date = new Date()
+//    def testLine1(a:Date, b:String): Unit ={
+//
+//      print("date:"+a,"b:"+b)
+//    }
+//
+//    val testLine2 = testLine1(date, _:String)  //Default parameter
+//
+//
+//    testLine2("12121bbbbb") //need only one para,cause Default parameter
+
+
+
+    /* make a  method  to a function*/
+//    def methodTransfer(a:Int, b:Int): Int ={
+//
+//      print("a+b is ", a+b)
+//      return a+b
+//    }
+//
+//    val methodTransferTest = methodTransfer _
+//
+//    var tmp = methodTransferTest(1,2)
+//    println("methodTransferTest",tmp )
+//    println("-----------")
+//     tmp = methodTransfer(1,3)
+//    println("methodTransfer ", tmp)
+
+
+      /*eg2*/
+//    def changeMethod1 (a:Int, b:Int)={
+//      println("test here")
+//      a+b
+//    }
+//
+//    val mVar = changeMethod1 _
+//    println(mVar(1,2))
+
+
+    /***
+     * function
+     *
+     */
+
+    /*function's declare*/
+//    var function0 = (a:Int, b:Int) => a+b
+//    println(function0(1,3))
+    /*eg2*/
+//    var func1 = (a:Int,b:Int) => a.toString+ b.toString
+//    println(func1(1,2))
+
+
+
+
+    /*use a function as parameter*/
+//    def highOrderFunc1  (a:Int, b:Int):Int= a + b
+//
+//    def highOrderFunc2 ( f : =>Int, g:Int)= println("2222222")
+//    println(highOrderFunc2(highOrderFunc1(1,2),2))
+
+
+    /*eg2*/
+//    def getTime()={
+//
+//      print("这是 getTime方法")
+//
+//      System.nanoTime
+//    }
+//
+//
+//    def test(f: => Long)={
+//
+//      print("time is "+f)
+//
+//    }
+//
+//    test(getTime())
+
+
+    /*Anonymous function*/
+
+//    var anonymousTest = (a:Int, b:Int) => a+b
+//    println(anonymousTest(1,2))
+
+
+    /*list test*/
+
+    //create a list
+    val listTemp = List(1,2,3)
+    //print(listTemp)
+
+    //create a list
+    val listTemp2 = 1::(2::(3::Nil))
+    //print(listTemp2)
+
+    //two dimension list
+    val listTwoDim = List(1,List(1,2,3))
+
+    //option
+
+    val listForOpt = List(1,2,3,'四',List(5,6))
+    val listOpt2 = List(1,2) ;
+    //1.add elements
+
+    //print(listForOpt:::listOpt2)  //concat two list
+
+    //print(listForOpt::("one", "two")::Nil)  //concat two list
+
+    // print(List.concat(listForOpt,listOpt2)) //to concat two list
+
+    //print(List.fill(10)("2"))  //repeat elements 2 ,  10 times
+
+
+
+
+
+
+
+
+    //2.delete
+
+    //3.change
+
+    //4.search
+
+
+    //print(listForOpt.head)  //get first elements of list
+
+    //print(listForOpt.tail)  //return except first element's other ones
+
+    //print(listForOpt.isEmpty)  //judge the list is empty or not
+
+
+    /*exception*/
+//    try{
+//      val reader = new FileReader("input.txt")
+//
+//    }catch {
+//      case fileNotFoundException: FileNotFoundException  => {println("this is a file not find ex")}
+//      case ex: IOException => {println("this is a IOexception")}
+//
+//    }finally {
+//      println("there is a error")
+//    }
+
+  }
+
+}
