@@ -1,0 +1,34 @@
+import org.apache.spark.rdd.RDD
+import org.apache.spark.{SparkConf, SparkContext}
+
+object wordCount {
+  def main(args: Array[String]): Unit = {
+
+    //create sparkConf
+    val conf: SparkConf = new SparkConf().setAppName("wordCount").setMaster("local[2]")
+
+    //create sparkcontext
+    val sc: SparkContext = new SparkContext(conf)
+
+    //create RDD
+    val lines: RDD[String] = sc.textFile("D:/doc/spark/input.txt")
+
+    //flatmap
+    val words: RDD[String] = lines.flatMap(_.split(" "))
+
+    //word and one
+    val wordAndOne: RDD[(String, Int)] = words.map((_, 1))
+
+    //group
+    val grouped: RDD[(String, Int)] = wordAndOne.reduceByKey(_ + _)
+
+    //sort by
+    val result: RDD[(String, Int)] = grouped.sortBy(_._2, ascending = false)
+
+    //save
+    result.saveAsTextFile("D:/doc/spark/out/t2")
+
+    //stop
+    sc.stop()
+  }
+}
