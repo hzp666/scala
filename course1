@@ -1,5 +1,6 @@
-import org.omg.CORBA
-import org.omg.CORBA.Any
+
+
+
 
 import java.io.{FileNotFoundException, FileReader, IOException}
 import java.util.Date
@@ -63,6 +64,30 @@ object scalaTest {
 //      case _ => print("none")
 //
 //    }
+
+    /*match 2*/
+//    val list = List(1,2,3.4,"spark","hive")
+//    for(i <- list){
+//      val rs =  i match {
+//        case i:Int =>"i is a Int"
+//        case i:Double => "i is a double"
+//        case i:String => "i is string , "+i
+//        case _ => "i is unknown type"
+//
+//      }
+//      println(rs)
+//    }
+    /*match 3 use guard */
+//    val list =List(1,2,3,4,5,6)
+//    for(ele <- list){
+//      val rs = ele match {
+//        case _ if(ele %2 == 0) => {ele+" is a even."}
+//        case _ => {ele +"is a odd."}
+//      }
+//      println(rs)
+//    }
+
+
 
     /* loop*/
 
@@ -222,6 +247,17 @@ object scalaTest {
 //
 //    arr1(0)=999
 //    arr1.foreach(x => print("second:"+x+"\n"))
+
+    /*create a array's two method*/
+
+//    var arr1 = Array(111,222.333,6666)
+//    arr1.foreach(println("arr1: ", _))
+//
+//    val arr2 = new Array[Int](3)
+//    arr2(0) = 9999
+//    arr2(1) = 88888
+//    arr2.foreach(println("arr2: ",_))
+
 
     /*Array Buffer*/
 
@@ -473,12 +509,12 @@ object scalaTest {
 //    val range1 = new Range(1,5,2)
 //    range1.foreach(println(_))
 
-
-    println(1 to 5 by 1)
-    println(1.to(5).by(2))
-    println(1 until 5)
-    val a = .5f to 10.8f by 0.5f
-    a.foreach(println(_))
+//
+//    println(1 to 5 by 1)
+//    println(1.to(5).by(2))
+//    println(1 until 5)
+//    val a = .5f to 10.8f by 0.5f
+//    a.foreach(println(_))
 
     /****************************************set *****************/
 
@@ -571,22 +607,138 @@ object scalaTest {
 //      iter2.next()
 //    }
 
+    /*****************Map*************************************map*/
+    val map1 = Map("name" -> "zhangsan", "age" -> "10")
+
+
+    /*mutable map*/
+//    val map2 = scala.collection.mutable.Map("name"->"zhangsan","gender"-> 2)
+//    map2 +=("age" -> 12)
+//
+//    map2.foreach(println(_))
+
+
+//    map1.foreach(println(_))
+//    println(map1.get("name"))
+
+    /*use key get value*/
+//    println(map1("name"))
+//    println(if(map1.contains("gender")) map1("gender") else 0 )
+
+    /*isEmpty*/
+//    println(map1.isEmpty)
+
+    /*get all keys*/
+//    println(map1.keys)
+
+    /*get all values*/
+//    val map2 = Map("name" -> "zhangsan", "age" -> "10")
+//    println(map2.values)
+
+    /*merge two map*/
+
+//    val map2 =Map("name" -> "hangman2", "age" -> "10","gender"->1)
+//    val map3 = Map("name" -> "zhangsan3", "age" -> "10")
+//    val map4 = map2 ++ map3
+//    map4.foreach(println(_))
+
+    /*get all keys and values*/
+//    val map2 =Map("name" -> "hangman2", "age" -> "10","gender"->1)
+//    map2.keys.foreach(i => {
+//
+//      print("key is ", i)
+//      println("value is ", map2(i))
+//
+//    })
+
+    /*apply*/
+//    val map2 =Map("name" -> "hangman2", "age" -> "10","gender"->1)
+//    println(map2.apply("name3"))
+
+    /*exists*/
+//    val map2 =Map("name" -> "hangman2", "age" -> "10","gender"->1)
+//    println(map2.exists(x => x._1 == "age" && x._2 == "10") )
+
+    /*filter*/
+//    val map2 = Map("name" -> "hangman2", "age" -> "10","gender"->1)
+//    println(map2.filter(x => x._1 == "name"))
+
+
+
+
+
+
 
 
     /**
      * method
      *
      * */
-    def add(b: Int, a: Int)={
+//    def add(b: Int, a: Int)={
+//
+//      var c = a
+//      var d =b
+//      a+b
+//
+//    }
 
-      var c = a
-      var d =b
-      a+b
 
-    }
+    /*get set */
+//    class classTest{
+//      private var privateVar = 0;
+//      def value=privateVar
+//
+//      def value_=(newValue:Int): Unit ={
+//        if(newValue>0){
+//          privateVar = newValue
+//        }
+//
+//      }
+//
+//
+//    }
+//
+//    val myClassTest = new classTest
+//    myClassTest.value=3
+//    println(myClassTest.value)
 
+    /*Infix */
+//    class MyClassTest{
+//      private var age = 0
+//
+//      def increment(addAge :Int){
+//        return age += addAge
+//      }
+//
+//      def curent:Int={age}
+//
+//      def getAge():Int ={
+//        return age
+//      }
+//
+//    }
+//    val classTest = new MyClassTest
+//    classTest increment 5
+//    println("this is current method :", classTest.curent)
+//    println("this is getAge method :", classTest.getAge())
 
+    /*infix eg2:*/
+//    class MyClass{
+//      def add(b:Int): Int ={
+//        var c = b +3;
+//        return c
+//      }}
+//
+//    val clazz = new MyClass
+//    println(clazz add 3)
 
+    /*omit parameter's () */
+//      var b =0
+//      def add(c:Int){
+//        b += c
+//      }
+//    add(666)
+//    println(b)
 
     /*Omit method's parameter*/
 //    def add1 ={
@@ -596,50 +748,6 @@ object scalaTest {
 //
 //    println(add1)
 
-    //reference a method
-//    val c = add(1,2)
-//    print(c)
-
-
-    /* test the default parameter */
-//    val date = new Date()
-//    def testLine1(a:Date, b:String): Unit ={
-//
-//      print("date:"+a,"b:"+b)
-//    }
-//
-//    val testLine2 = testLine1(date, _:String)  //Default parameter
-//
-//
-//    testLine2("12121bbbbb") //need only one para,cause Default parameter
-
-
-
-    /* make a  method  to a function*/
-//    def methodTransfer(a:Int, b:Int): Int ={
-//
-//      print("a+b is ", a+b)
-//      return a+b
-//    }
-//
-//    val methodTransferTest = methodTransfer _
-//
-//    var tmp = methodTransferTest(1,2)
-//    println("methodTransferTest",tmp )
-//    println("-----------")
-//     tmp = methodTransfer(1,3)
-//    println("methodTransfer ", tmp)
-
-
-      /*eg2*/
-//    def changeMethod1 (a:Int, b:Int)={
-//      println("test here")
-//      a+b
-//    }
-//
-//    val mVar = changeMethod1 _
-//    println(mVar(1,2))
-
 
     /***
      * function
@@ -647,44 +755,44 @@ object scalaTest {
      */
 
     /*function's declare*/
-//    var function0 = (a:Int, b:Int) => a+b
-//    println(function0(1,3))
+    //    var function0 = (a:Int, b:Int) => a+b
+    //    println(function0(1,3))
     /*eg2*/
-//    var func1 = (a:Int,b:Int) => a.toString+ b.toString
-//    println(func1(1,2))
+    //    var func1 = (a:Int,b:Int) => a.toString+ b.toString
+    //    println(func1(1,2))
 
 
 
 
     /*use a function as parameter*/
-//    def highOrderFunc1  (a:Int, b:Int):Int= a + b
-//
-//    def highOrderFunc2 ( f : =>Int, g:Int)= println("2222222")
-//    println(highOrderFunc2(highOrderFunc1(1,2),2))
+    //    def highOrderFunc1  (a:Int, b:Int):Int= a + b
+    //
+    //    def highOrderFunc2 ( f : =>Int, g:Int)= println("2222222")
+    //    println(highOrderFunc2(highOrderFunc1(1,2),2))
 
 
     /*eg2*/
-//    def getTime()={
-//
-//      print("这是 getTime方法")
-//
-//      System.nanoTime
-//    }
-//
-//
-//    def test(f: => Long)={
-//
-//      print("time is "+f)
-//
-//    }
-//
-//    test(getTime())
+    //    def getTime()={
+    //
+    //      print("这是 getTime方法")
+    //
+    //      System.nanoTime
+    //    }
+    //
+    //
+    //    def test(f: => Long)={
+    //
+    //      print("time is "+f)
+    //
+    //    }
+    //
+    //    test(getTime())
 
 
     /*Anonymous function*/
 
-//    var anonymousTest = (a:Int, b:Int) => a+b
-//    println(anonymousTest(1,2))
+    //    var anonymousTest = (a:Int, b:Int) => a+b
+    //    println(anonymousTest(1,2))
 
 
     /*list test*/
@@ -733,6 +841,287 @@ object scalaTest {
     //print(listForOpt.tail)  //return except first element's other ones
 
     //print(listForOpt.isEmpty)  //judge the list is empty or not
+
+    /**
+     *
+     * Class
+     *
+     *
+     */
+    //    class  People(var name:String){
+//
+//      def introduce(): Unit ={
+//        println("my name is :", name)
+//      }
+//    }
+//
+//    val zhangs = new People("zhangsan")
+//    zhangs.introduce()
+//
+//    println("get the people's old name ",zhangs.name)
+//
+//    zhangs.name = "zhangXiaoSan"
+//    println("get the people's new name ",zhangs.name)
+
+
+
+
+
+    /*create var in method*/
+//    class myMethodTest(var var1:Int){
+//      def outPutTest(): Unit ={
+//        println(var1)
+//      }
+//}
+//    val test = new myMethodTest(1)
+//    test.outPutTest()
+
+    //reference a method
+//    val c = add(1,2)
+//    print(c)
+
+
+    /*
+    * 111111111````````````````````````````````````*/
+
+
+    /* test the default parameter */
+//    val date = new Date()
+//    def testLine1(a:Date, b:String): Unit ={
+//
+//      print("date:"+a,"b:"+b)
+//    }
+//
+//    val testLine2 = testLine1(date, _:String)  //Default parameter
+//
+//
+//    testLine2("12121bbbbb") //need only one para,cause Default parameter
+
+
+
+    /* make a  method  to a function*/
+//    def methodTransfer(a:Int, b:Int): Int ={
+//
+//      print("a+b is ", a+b)
+//      return a+b
+//    }
+//
+//    val methodTransferTest = methodTransfer _
+//
+//    var tmp = methodTransferTest(1,2)
+//    println("methodTransferTest",tmp )
+//    println("-----------")
+//     tmp = methodTransfer(1,3)
+//    println("methodTransfer ", tmp)
+
+
+      /*eg2*/
+//    def changeMethod1 (a:Int, b:Int)={
+//      println("test here")
+//      a+b
+//    }
+//
+//    val mVar = changeMethod1 _
+//    println(mVar(1,2))
+
+    /****** Apply *******/
+//    class ApplyTest {
+//      def apply(name:String): Unit ={
+//        printf("called apply method , and name is %s",name)
+//      }
+//    }
+//    val test = new ApplyTest
+//    test("张三")
+
+    /*apply2 */
+//    def add = (x:Int, y:Int) => x+y
+//
+//    println("这里没有调用apply", add(1,2))
+//    println("这里调用 apply：",add.apply(2,3))
+
+
+    /*update*/
+//    val arr2 = new Array[Int](3)
+//    arr2(0) = 9999
+//    arr2(1) = 88888
+//    arr2.update(2,9999)
+//    arr2.foreach(println("arr2: ",_))
+
+    /*apply  use case*/
+//    case class Dog(val name:String){
+//      def bark(): Unit ={
+//        println("dog is wangwang")
+//      }
+//    }
+//
+//    val daHuang = Dog("daHuang")
+//    daHuang.bark()
+
+    /*unapply*/
+//    class People(val name:String){
+//      def peopleInfo(): Unit ={
+//        println("this people‘s name is :")
+//      }
+//    }
+//    object People{
+//      def apply(name:String): People ={
+//
+//        return new People(name)
+//      }
+//
+//
+//      def unapply(c:People): Option[String] ={
+//
+//        return Some(c.name)
+//      }
+//    }
+//
+//   var People(getName) =  People("张三")
+//    println(getName)
+    /******************unapply 2 ****************************/
+//    class Animal(val name:String, val theType:String){
+//      def animalInfo(): Unit ={
+//        printf("this Animal‘s name is %s, type is %s", name, theType)
+//      }
+//    }
+//    object Animal{
+//      def apply(name:String,theType:String): Animal ={
+//
+//        return new Animal(name,theType)
+//      }
+//
+//
+//      def unapply(c:Animal): Option[(String,String)] ={
+//
+//        return Some(c.name,c.theType)
+//      }
+//    }
+//
+//    val animal1 = Animal("大黄","狗狗")
+//    animal1.animalInfo()
+//    println("")
+//
+//
+//    val Animal(n,t) = animal1
+//    printf("the animal's name is %s, and the type is %s",n,t)
+
+
+
+
+    //    class ApplyTest(name:String){
+//      def speak(){
+//        val name = this.name
+//        println(name+"is speaking")
+//      }
+//
+//
+//    }
+//    object ApplyTest{
+//      def apply(name:String): ApplyTest ={
+//        new ApplyTest(name)
+//      }
+//
+//    }
+//    val p1 = ApplyTest("张三")
+//    p1.speak()
+
+
+    /*option eg1:*/
+//    case class Dog(val dname:String){
+//
+//      val price_Dic = Map("柯基"->1000,"金毛"->"1100","边牧"->1500)
+//
+//      def queryPrice(): Option[Any] ={
+
+//        return price_Dic.get(dname)
+//      }
+//    }
+//
+//    val d1 = Dog("金毛").queryPrice()
+//    println(" return is",d1)
+//    println("金毛 price is",d1.get)
+//
+//    val d2 =Dog("柴犬").queryPrice()
+//    println(" return is",d2)
+//    println("柴犬’s price is ", d2.getOrElse("Option retrun None"))
+
+
+
+    /*option eg2:*/
+//    case class Dog(val name:String, val age:Int){
+//
+//      }
+//    val myPet = Map("大黄"->Dog("大黄",3),"四眼"->Dog("四眼",2))
+//    println(myPet.get("四眼"))
+
+
+
+    /********  abstract  *****/
+//    abstract class People(){
+//      val name:String
+//
+//      def speak()
+//      def info(): Unit ={
+//        printf("this people's name is %s", name)
+//      }
+//    }
+//
+//    case class Male(pname:String) extends People {
+//      val name = pname
+//
+//      override def speak(): Unit = {
+//        printf("the man is speak")
+//      }
+//
+//      }
+//
+//    val male1 = Male("尼古拉斯-张三")
+//    male1.speak()
+
+
+    /*Trait*/
+//    trait Runable{
+//      def category:String
+//      def run(): Unit ={
+//        printf("%s can run",category)
+//      }
+//    }
+//
+//    trait Flyable {
+//      def category: String
+//
+//      def fly(): Unit = {
+//        printf("%s can fly", category)
+//      }
+//    }
+//      abstract class Animal(val theName:String){
+//        def info()
+//
+//      }
+//
+//    case class Dog() extends Animal("Dog") with Runable{
+//      override def category: String = "哺乳动物"
+//
+//      override def info(): Unit = {
+//      printf("the category is %s, and the name is %s \n",category,theName)
+//      }
+//      }
+//
+//
+//    val erHa = Dog()
+//    erHa.info()
+//    erHa.run()
+
+
+
+
+
+
+
+
+
+
+
 
 
     /*exception*/
